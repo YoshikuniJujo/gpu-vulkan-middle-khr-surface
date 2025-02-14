@@ -6,13 +6,13 @@ author:              "Yoshikuni Jujo"
 maintainer:          "yoshikuni.jujo@gmail.com"
 copyright:           "(c) 2025 Yoshikuni Jujo"
 
-extra-source-files:
+extra-doc-files:
 - README.md
 - CHANGELOG.md
 
 # Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
+synopsis:            medium wrapper for VK_KHR_surface extension of the Vulkan API
+category:            GPU
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
@@ -21,13 +21,13 @@ description:         Please see the README on GitHub at <https://github.com/Yosh
 
 dependencies:
 - base >= 4.7 && < 5
-- data-default
-- gpu-vulkan-middle
-- gpu-vulkan-core
-- gpu-vulkan-core-khr-surface
-- storable-peek-poke
-- c-enum
-- typelevel-tools-yj
+- data-default < 1
+- gpu-vulkan-middle < 1
+- gpu-vulkan-core < 1
+- gpu-vulkan-core-khr-surface < 1
+- storable-peek-poke < 1
+- c-enum < 1
+- typelevel-tools-yj < 1
 
 ghc-options:
 - -Wall

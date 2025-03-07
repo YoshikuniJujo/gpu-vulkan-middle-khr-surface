@@ -12,7 +12,7 @@ module Gpu.Vulkan.Khr.Surface.Middle.Internal (
 	-- * CAPABILITIES AND FORMAT
 
 	Capabilities(..), capabilitiesFromCore,
-	Format(..), formatFromCore ) where
+	Format(..), formatFromCore, formatToCore ) where
 
 import Data.Word
 import Data.TypeLevel.ParMaybe qualified as TPMaybe
@@ -84,11 +84,9 @@ formatFromCore Sfc.C.Format {
 		formatFormat = Vk.Format fmt,
 		formatColorSpace = ColorSpace cs }
 
-{-
 formatToCore :: Format -> Sfc.C.Format
 formatToCore Format {
 	formatFormat = Vk.Format fmt,
 	formatColorSpace = ColorSpace cs } = Sfc.C.Format {
 		Sfc.C.formatFormat = fmt,
 		Sfc.C.formatColorSpace = cs }
--}

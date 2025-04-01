@@ -11,7 +11,7 @@ module Gpu.Vulkan.Khr.Surface.Middle.Internal (
 
 	-- * CAPABILITIES AND FORMAT
 
-	Capabilities(..), capabilitiesFromCore,
+	Capabilities(..), capabilitiesFromCore, capabilitiesToCore,
 	Format(..), formatFromCore, formatToCore ) where
 
 import Data.Word
@@ -70,6 +70,30 @@ capabilitiesFromCore Sfc.C.Capabilities {
 		capabilitiesSupportedCompositeAlpha =
 			CompositeAlphaFlagBits sca,
 		capabilitiesSupportedUsageFlags = Image.UsageFlagBits suf }
+
+capabilitiesToCore :: Capabilities -> Sfc.C.Capabilities
+capabilitiesToCore Capabilities {
+	capabilitiesMinImageCount = mnic,
+	capabilitiesMaxImageCount = mxic,
+	capabilitiesCurrentExtent = ce,
+	capabilitiesMinImageExtent = mnie,
+	capabilitiesMaxImageExtent = mxie,
+	capabilitiesMaxImageArrayLayers = mials,
+	capabilitiesSupportedTransforms = TransformFlagBits st,
+	capabilitiesCurrentTransform = TransformFlagBits ct,
+	capabilitiesSupportedCompositeAlpha = CompositeAlphaFlagBits sca,
+	capabilitiesSupportedUsageFlags = Image.UsageFlagBits suf
+	} = Sfc.C.Capabilities {
+		Sfc.C.capabilitiesMinImageCount = mnic,
+		Sfc.C.capabilitiesMaxImageCount = mxic,
+		Sfc.C.capabilitiesCurrentExtent = ce,
+		Sfc.C.capabilitiesMinImageExtent = mnie,
+		Sfc.C.capabilitiesMaxImageExtent = mxie,
+		Sfc.C.capabilitiesMaxImageArrayLayers = mials,
+		Sfc.C.capabilitiesSupportedTransforms = st,
+		Sfc.C.capabilitiesCurrentTransform = ct,
+		Sfc.C.capabilitiesSupportedCompositeAlpha = sca,
+		Sfc.C.capabilitiesSupportedUsageFlags = suf }
 
 data Format = Format {
 	formatFormat :: Vk.Format,
